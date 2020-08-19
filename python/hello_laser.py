@@ -5,9 +5,9 @@
 *      * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
 *        TIME.
 *
-* The following code is release under the MIT license.
+* The following code is released under the MIT license.
 *
-* Please refer to the included license documet for further information.
+* Please refer to the included license document for further information.
 """
 import sys
 import serial
