@@ -3,7 +3,7 @@ project(hello_laser VERSION 0.1.0)
 
 #Inlcude wjwwood serial include files
 include_directories(wjwwood-serial/include)
-enable_testing()
+
 
 if(APPLE)
     find_library(IOKIT_LIBRARY IOKit)
@@ -50,7 +50,7 @@ else()
 endif()
 
 # Add the executable file
-add_executable(${PROJECT_NAME} main.cpp)
+add_executable(${PROJECT_NAME} hello_laser.cpp)
 
 # Add the wjwood-serial dependancy and link it to our exe
 add_dependencies(${PROJECT_NAME} wjwwood-serial)

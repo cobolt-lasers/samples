@@ -1,0 +1,67 @@
+"""
+* hello_laser.py
+* 
+*   THE PRESENT SAMPLE CODE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
+*      * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
+*        TIME.
+*
+* The following code is release under the MIT license.
+*
+* Please refer to the included license documet for further information.
+"""
+import sys
+import serial
+from serial import SerialException
+from serial.tools import list_ports
+
+def enumerate_ports( devices_found ):
+    devices_found.extend( list_ports.comports() )
+    i = 0
+    for device in devices_found:
+        print( "{} : ({}, {}, {})".format(i, device.device, device.description, device.hwid ) )
+        i = i + 1
+
+class InvalidPortException(Exception):
+    def __str__(self):
+        return "Port ID out of range"
+
+baud = 112500
+devices_found = list()
+
+try:
+    print( "Please select serial port!" )
+    
+    enumerate_ports( devices_found )
+
+    port_id = int( input() )
+
+    # Check that the user selected a valid port
+    if ( port_id  >=  len( devices_found ) ):
+        raise InvalidPortException()
+
+except Exception as e:
+    print(e)
+
+# Connect to the slected port port, baudrate, timeout in milliseconds
+my_serial = serial.Serial( devices_found[port_id].device, baud, timeout=1)
+
+try:
+    #Check if we managed to open the port (optional)
+    print( "Is the serial port open?", end='' )
+    if ( my_serial.is_open ): 
+        print(" Yes.")
+    else:
+        print( " No." )
+
+    # Ask the laser for its serial number, ( note the required ending \r\n )
+    # Look in manual for the commands and response formatting of your laser!
+    my_serial.write( b"gsn?\r\n" )
+
+    result = my_serial.readline().decode('ascii')
+
+    print( "Serial number was: {}\n".format( result ))
+
+except Exception as e:
+    print(e)
+    if my_serial.is_open:
+        my_serial.close()
