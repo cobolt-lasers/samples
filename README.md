@@ -1,5 +1,5 @@
 # Sample code with examples to simplify connection to Cobolt Lasers
-[![Build Status](https://travis-ci.com/cobolt-lasers/samples.svg?branch=master)](https://travis-ci.com/cobolt-lasers/samples)*(Linux and OS X)* ]
+[![Build Status](https://travis-ci.com/cobolt-lasers/samples.svg?branch=master)](https://travis-ci.com/cobolt-lasers/samples)*(Linux) ]
 
 This is a cross-platform library for interfacing with rs-232 serial like ports written in C++. It provides a modern C++ interface with a workflow designed to look and feel like PySerial, but with the speed and control provided by C++. 
 
