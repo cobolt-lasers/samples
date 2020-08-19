@@ -29,6 +29,7 @@ It should supports any platform that wjwwood-serial support:
   * Windows
   * Linux
   * osx
+ 
 The c++ version is however developed on Windows but built on TravisCI to verify compilation on various targets. 
 
 #### Building the program
