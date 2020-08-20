@@ -89,9 +89,11 @@ int main(int, char**) {
 
         // Ask the laser for its serial number, ( note the required ending \r\n )
         // Look in manual for the commands and response formatting of your laser!
-        my_serial.write( "gsn?\r\n" );
+        const std::string command = "gsn?"; // gsn? --> get serial number
+        const std::string termination = "\r\n"; // This document is encoded in ascii compatible UTF-8. \r\n in UTF-8 and ASCII are the same.
+        my_serial.write( command + termination );
 
-        // Fetch results
+        // Fetch results    
         string result = my_serial.readline();
         cout << "Serial number was: " << result << endl;
 

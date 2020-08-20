@@ -55,7 +55,9 @@ try:
 
     # Ask the laser for its serial number, ( note the required ending \r\n )
     # Look in manual for the commands and response formatting of your laser!
-    my_serial.write( b"gsn?\r\n" )
+    command = "gsn?"
+    termination = "\r\n"
+    my_serial.write( (command + termination).encode('ascii') ) # encode('ascii') converts python string to a binary ascii representation
 
     result = my_serial.readline().decode('ascii')
 
